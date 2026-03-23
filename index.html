@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Manoj Kumar — Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+  <!-- Cursor -->
+  <div class="cursor-dot"  id="cursorDot"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- Thread SVG — z-index:1, behind all content, pointer-events:none -->
+  <svg id="threadCanvas" class="thread-canvas" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <filter id="threadGlow" x="-50%" y="-50%" width="200%" height="200%">
+        <feGaussianBlur stdDeviation="2.5" result="blur"/>
+        <feMerge>
+          <feMergeNode in="blur"/>
+          <feMergeNode in="SourceGraphic"/>
+        </feMerge>
+      </filter>
+    </defs>
+    <path id="seg1Shadow" class="thread-shadow"/>
+    <path id="seg1Path"   class="thread-path" filter="url(#threadGlow)"/>
+    <path id="seg2Shadow" class="thread-shadow"/>
+    <path id="seg2Path"   class="thread-path" filter="url(#threadGlow)"/>
+    <path id="seg3Shadow" class="thread-shadow"/>
+    <path id="seg3Path"   class="thread-path" filter="url(#threadGlow)"/>
+    <g id="nodesGroup"></g>
+  </svg>
+
+  <!-- NAV -->
+  <nav id="navbar">
+    <div class="nav-logo">MK.</div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="Resume.pdf" download class="nav-resume">Resume</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- ── HERO ─────────────────────────────── -->
+  <section id="hero">
+    <div class="container">
+      <div class="hero-inner">
+
+        <div class="hero-text">
+          <div class="hero-availability">
+            <span class="dot"></span>
+            Available for opportunities
+          </div>
+          <h1 class="hero-name">
+            Manoj<br/><em>Kumar</em>
+          </h1>
+          <div class="hero-role">Developer &amp; UI/UX Designer</div>
+          <p class="hero-intro">
+            I build things that work — and feel great to use.
+            From AI-powered backends to pixel-perfect Figma prototypes,
+            I bridge the gap between logic and design.
+          </p>
+          <div class="hero-cta">
+            <a href="#projects" class="btn btn-primary">See My Work</a>
+            <a href="#contact"  class="btn btn-ghost">Let's Talk</a>
+            <a href="Resume.pdf" download class="btn btn-resume">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
+                <polyline points="7 10 12 15 17 10"/>
+                <line x1="12" y1="15" x2="12" y2="3"/>
+              </svg>
+              Resume
+            </a>
+          </div>
+        </div>
+
+        <div class="hero-image-wrap">
+          <div class="hero-image-frame" id="heroPhotoFrame">
+            <img src="portfolio_photo.png" alt="Manoj Kumar"/>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-num">7.7</div>
+            <div class="hero-stat-label">Current GPA</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── ABOUT ─────────────────────────────── -->
+  <section id="about">
+    <div class="container">
+      <div class="about-grid">
+
+        <div class="about-left">
+          <div class="section-eyebrow reveal">About</div>
+          <h2 class="about-heading reveal">The Person<br/><em>behind the code</em></h2>
+          <p class="about-subtext reveal">A few quick facts about me.</p>
+          <div class="about-info reveal">
+            <div class="about-info-row">
+              <span class="about-info-label">Location</span>
+              <span class="about-info-value">Andhra Pradesh, India</span>
+            </div>
+            <div class="about-info-row">
+              <span class="about-info-label">Degree</span>
+              <span class="about-info-value">B.Tech — Computer Science</span>
+            </div>
+            <div class="about-info-row">
+              <span class="about-info-label">Batch</span>
+              <span class="about-info-value">2023 – 2026</span>
+            </div>
+            <div class="about-info-row">
+              <span class="about-info-label">Email</span>
+              <span class="about-info-value">manoj18.koni@gmail.com</span>
+            </div>
+            <div class="about-info-row">
+              <span class="about-info-label">Status</span>
+              <span class="about-info-value">Open to internships &amp; projects</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="about-right">
+          <p class="about-body reveal">
+            I'm a <strong>detail-oriented Computer Science student</strong> at Geethanjali
+            Institute of Science &amp; Technology with a deep interest in software
+            development and human-centred design. My journey spans from
+            <strong>backend engineering with Python and Django</strong> to crafting
+            pixel-perfect UI prototypes in Figma.
+          </p>
+          <p class="about-body reveal">
+            I enjoy tackling real-world challenges — whether it's integrating
+            <strong>machine learning models</strong> into production web apps or designing
+            intuitive user flows that just feel right. I believe the best software
+            solves a genuine problem and delights the people who use it.
+          </p>
+          <div class="reveal">
+            <div class="about-education-title">Education</div>
+            <div class="edu-item">
+              <div class="edu-year">2023 – Present</div>
+              <div class="edu-details">
+                <div class="edu-degree">B.Tech — Computer Science &amp; Engineering</div>
+                <div class="edu-school">Geethanjali Institute of Science &amp; Technology</div>
+                <div class="edu-gpa">GPA: 7.70</div>
+              </div>
+            </div>
+            <div class="edu-item">
+              <div class="edu-year">2020 – 2023</div>
+              <div class="edu-details">
+                <div class="edu-degree">Diploma — Electronics &amp; Communication Engineering</div>
+                <div class="edu-school">Geethanjali Institute of Science &amp; Technology</div>
+                <div class="edu-gpa">GPA: 6.64</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SKILLS ─────────────────────────────── -->
+  <section id="skills">
+    <div class="container">
+      <div class="skills-header reveal">
+        <div class="skills-header-left">
+          <div class="section-eyebrow">Skills</div>
+          <h2 class="skills-heading">What I<br/><em>Work With</em></h2>
+        </div>
+        <p class="skills-header-note">Hover over a category to explore.</p>
+      </div>
+      <div class="skills-grid">
+        <div class="skill-category reveal">
+          <div class="skill-cat-title">Languages</div>
+          <div class="skill-tags">
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">HTML</span>
+            <span class="skill-tag">CSS</span>
+            <span class="skill-tag">SQL</span>
+          </div>
+        </div>
+        <div class="skill-category reveal">
+          <div class="skill-cat-title">Frameworks</div>
+          <div class="skill-tags">
+            <span class="skill-tag">Django</span>
+            <span class="skill-tag">FastAPI</span>
+          </div>
+        </div>
+        <div class="skill-category reveal">
+          <div class="skill-cat-title">Tools &amp; Design</div>
+          <div class="skill-tags">
+            <span class="skill-tag">Figma</span>
+            <span class="skill-tag">MySQL</span>
+            <span class="skill-tag">Git</span>
+            <span class="skill-tag">GitHub</span>
+            <span class="skill-tag">Excel</span>
+          </div>
+        </div>
+        <div class="skill-category reveal">
+          <div class="skill-cat-title">Platforms</div>
+          <div class="skill-tags">
+            <span class="skill-tag">VS Code</span>
+            <span class="skill-tag">PyCharm</span>
+            <span class="skill-tag">Jupyter</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PROJECTS ─────────────────────────────── -->
+  <section id="projects">
+    <div class="container">
+      <div class="projects-header">
+        <div class="section-eyebrow reveal">Projects</div>
+        <h2 class="projects-heading reveal">Selected<br/><em>Work</em></h2>
+      </div>
+      <div class="projects-grid">
+
+        <div class="project-card featured reveal">
+          <div class="project-content">
+            <div class="project-card-top">
+              <span class="project-number">01</span>
+              <a href="https://github.com/ManojKumar2074" target="_blank" class="project-link-icon">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M7 7h10v10"/></svg>
+              </a>
+            </div>
+            <h3 class="project-name">Shiv Shankar Door</h3>
+            <p class="project-desc">
+              Turned a manual door-selling process into a fully digital experience.
+              Customers upload room photos and preview doors in real space using an
+              AI-powered OpenCV canvas. Admin dashboard handles inventory,
+              multi-image uploads, and dimension-based pricing.
+            </p>
+            <div class="project-stack">
+              <span class="stack-tag">Python</span>
+              <span class="stack-tag">Django</span>
+              <span class="stack-tag">OpenCV</span>
+              <span class="stack-tag">JavaScript</span>
+              <span class="stack-tag">SQLite</span>
+            </div>
+          </div>
+          <div class="project-visual">
+            <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="2" width="18" height="20" rx="1"/>
+              <path d="M7 2v20"/>
+              <circle cx="5.5" cy="12" r="0.5" fill="currentColor" stroke="none"/>
+            </svg>
+          </div>
+        </div>
+
+        <div class="project-card reveal">
+          <div class="project-card-top">
+            <span class="project-number">02</span>
+            <a href="https://github.com/ManojKumar2074" target="_blank" class="project-link-icon">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M7 7h10v10"/></svg>
+            </a>
+          </div>
+          <h3 class="project-name">Railway Security Risk Detection</h3>
+          <p class="project-desc">
+            NLP classifier flagging security threats in railway communications
+            with 91% accuracy. SHAP integration makes every prediction
+            explainable. Deployed via Django with REST API for real-time
+            and batch processing.
+          </p>
+          <div class="project-stack">
+            <span class="stack-tag">Python</span>
+            <span class="stack-tag">Django</span>
+            <span class="stack-tag">NLP</span>
+            <span class="stack-tag">ML</span>
+            <span class="stack-tag">SHAP</span>
+          </div>
+        </div>
+
+        <div class="project-card reveal">
+          <div class="project-card-top">
+            <span class="project-number">03</span>
+            <a href="https://www.figma.com/proto/KBk7sDCxEQbWnJjm180ocH/Star-Bucks?page-id=0%3A1&node-id=8-2&starting-point-node-id=156%3A67&t=sNrsRJsbDimMJWz4-1" target="_blank" class="project-link-icon">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M7 7h10v10"/></svg>
+            </a>
+          </div>
+          <h3 class="project-name">Starbucks Landing Page</h3>
+          <p class="project-desc">
+            Redesigned the Starbucks experience in Figma — product-first
+            storytelling, breathing room, frictionless navigation.
+            Every interaction prototyped to feel native, not just clickable.
+          </p>
+          <div class="project-stack">
+            <span class="stack-tag">Figma</span>
+            <span class="stack-tag">UI Design</span>
+            <span class="stack-tag">Prototyping</span>
+          </div>
+        </div>
+
+        <div class="project-card reveal">
+          <div class="project-card-top">
+            <span class="project-number">04</span>
+            <a href="https://www.figma.com/proto/Fj6wpfSNxXwcEhyM8L0CMg/Ramen?page-id=0%3A1&node-id=8-2&starting-point-node-id=22%3A2&t=V8KaSAd7q9bniVVm-1" target="_blank" class="project-link-icon">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M7 7h10v10"/></svg>
+            </a>
+          </div>
+          <h3 class="project-name">Ramen Website UI</h3>
+          <p class="project-desc">
+            Restaurant UI that earns appetite before a word is read.
+            Rich typography, deliberate colour, and a fully interactive
+            prototype simulating the complete user journey.
+          </p>
+          <div class="project-stack">
+            <span class="stack-tag">Figma</span>
+            <span class="stack-tag">UI/UX Design</span>
+            <span class="stack-tag">Prototyping</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CERTIFICATIONS ─────────────────────── -->
+  <section id="certifications">
+    <div class="container">
+      <div class="section-eyebrow reveal">Certifications</div>
+      <h2 class="cert-heading reveal">Learning &amp; <em>Growth</em></h2>
+      <div class="cert-grid">
+        <div class="cert-card reveal">
+          <div class="cert-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/>
+            </svg>
+          </div>
+          <div>
+            <div class="cert-name">AWS Cloud Computing</div>
+            <div class="cert-issuer">APSSDC — Amazon Web Services</div>
+            <div class="cert-date">Sep 2023 · EC2, S3, IAM fundamentals</div>
+          </div>
+        </div>
+        <div class="cert-card reveal">
+          <div class="cert-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="16 18 22 12 16 6"/>
+              <polyline points="8 6 2 12 8 18"/>
+            </svg>
+          </div>
+          <div>
+            <div class="cert-name">Python for Beginners</div>
+            <div class="cert-issuer">Scaler</div>
+            <div class="cert-date">Jul 2025 · Data structures &amp; problem-solving</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CONTACT ─────────────────────────────── -->
+  <section id="contact">
+    <div class="container">
+      <div class="section-eyebrow contact-eyebrow reveal">Contact</div>
+      <h2 class="contact-heading reveal">Let's<br/><em>Connect</em></h2>
+      <p class="contact-sub reveal">
+        Whether you have a project in mind, an opportunity to share,
+        or just want to say hello — my inbox is always open.
+      </p>
+      <a href="mailto:manoj18.koni@gmail.com" class="contact-email-link reveal">
+        manoj18.koni@gmail.com
+      </a>
+      <div class="contact-socials reveal">
+        <a href="https://github.com/ManojKumar2074" target="_blank" class="social-link">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/>
+          </svg>
+          GitHub
+        </a>
+        <a href="https://linkedin.com/in/manoj-kumar-250085315" target="_blank" class="social-link">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/>
+            <rect x="2" y="9" width="4" height="12"/>
+            <circle cx="4" cy="4" r="2"/>
+          </svg>
+          LinkedIn
+        </a>
+        <a href="mailto:manoj18.koni@gmail.com" class="social-link">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+            <polyline points="22,6 12,13 2,6"/>
+          </svg>
+          Email
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ─────────────────────────────── -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <span class="footer-name">Manoj Kumar</span>
+        <span class="footer-copy">© 2025 — All rights reserved</span>
+        <a href="#hero" class="footer-back-top">
+          Back to top
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="18 15 12 9 6 15"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
